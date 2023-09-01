@@ -18,6 +18,18 @@ Route::get('/', function () {
     return view('admin.dashboard');
 })->name('home');
 
+Route::get('/orders', function () {
+    return view('admin.orders');
+})->name('orders');
+
+Route::get('/products', function () {
+    return view('admin.products');
+})->name('products');
+
+Route::get('/messages', function () {
+    return view('admin.messages');
+})->name('messages');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,4 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';
