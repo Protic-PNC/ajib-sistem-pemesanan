@@ -12,6 +12,8 @@ class DetailConsumer extends Model
 
     protected $fillable = [
         'user_id',
+        'branch_name',
+        'branch_id',
         'kabupaten',
         'kecamatan',
         'kelurahan',

@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('detail_consumers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->string('branch_name');
+            $table->bigInteger('branch_id');
             $table->string('kabupaten');
             $table->string('kecamatan');
             $table->string('kelurahan');
