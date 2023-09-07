@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Order;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class DetailOrder extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'produk_id',
+        'nama_produk',
+        'quantity',
+        'harga'
+    ];
+
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+}

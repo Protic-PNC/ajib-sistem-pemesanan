@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function detailOrder()
+    {
+        return $this->hasMany(DetailOrder::class);
+    }
 }
