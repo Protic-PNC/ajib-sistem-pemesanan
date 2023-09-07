@@ -15,11 +15,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
-        variants: {
-            extend: {
-                backgroundColor: ['active'],
-            }
-        },
     },
 
     plugins: [forms],
