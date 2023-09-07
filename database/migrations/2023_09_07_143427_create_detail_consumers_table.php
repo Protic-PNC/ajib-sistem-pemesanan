@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('kabupaten');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->string('rt');
-            $table->string('rw');
-            $table->string('alamat');
-            $table->string('kode_pos');
-            $table->string('no_hp');
+            $table->integer('rt');
+            $table->integer('rw');
+            $table->text('alamat');
+            $table->integer('kode_pos');
+            $table->char('no_hp', 13);
             $table->string('foto_rumah');
             $table->timestamps();
         });
