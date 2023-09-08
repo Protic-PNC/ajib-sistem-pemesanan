@@ -15,9 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware(['check.token'])->group(function () {
+
+    Route::get('/user', function (Request $request) {
+        $user = User::get();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $user
+        ]);
+    });
 });
-
-
 
