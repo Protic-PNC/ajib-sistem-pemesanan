@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Token;
 use App\Models\DetailConsumer;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -47,5 +48,10 @@ class User extends Authenticatable
     public function detailConsumer()
     {
         return $this->hasOne(DetailConsumer::class);
+    }
+
+    public function token()
+    {
+        return $this->hasOne(Token::class);
     }
 }
