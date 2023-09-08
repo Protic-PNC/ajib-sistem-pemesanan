@@ -32,24 +32,3 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// crete token
-Route::post('/tokens/create', function (Request $request) {
-
-    try{
-        $request->validate([
-            'token_name' => 'required',
-        ]);
-
-        $token = $request->user()->createToken($request->token_name);
-
-        Token::create([
-            'user_id' => $request->user()->id,
-            'token' => $token->plainTextToken,
-        ]);
-
-        return redirect()->back()->with('status', 'Token Created!');
-
-    }catch(\Exception $e){
-        return redirect()->back()->with('status', $e->getMessage());
-    }
-})->name('token.create');
