@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompleteData;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Models\Token;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +34,9 @@ Route::middleware(['auth', 'check.consumer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
 
-require __DIR__.'/auth.php';
+Route::get('/product', [ProductController::class, 'listProduct']);
+Route::get('/category', [CategoryController::class, 'listCategory']);
 
+require __DIR__ . '/auth.php';
