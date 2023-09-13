@@ -61,9 +61,9 @@
         </div>
     </div>
     <div class="navigation">
-        <a href="#">Beranda</a> |
-        <a href="#">Tentang</a> |
-        <a href="#">Kontak</a>
+        <a href="#">Home</a> |
+        <a href="#">Pesanan</a> |
+        <a href="#">Profile</a>
     </div>
 </body>
 
