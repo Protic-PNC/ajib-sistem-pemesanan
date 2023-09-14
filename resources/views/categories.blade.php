@@ -121,7 +121,9 @@
                 <div class="card">
                     <img src="{{ $category['images'][0]['image'] }}" alt="{{ $category['name'] }}">
                     <div class="card-content">
-                        <p>{{ $category['name'] }}</p>
+                        <a href="{{ url('category', ['slug' => $category['slug']]) }}">
+                            <p>{{ $category['name'] }}</p>
+                        </a>
                     </div>
                 </div>
             @endforeach

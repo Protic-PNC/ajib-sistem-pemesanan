@@ -19,4 +19,13 @@ class CategoryController extends Controller
 
         return view('categories', compact('categories'));
     }
+
+    public function showCategory($slug)
+    {
+        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/product');
+
+        $products = $response->json()['data'];
+
+        return view('category', compact('products'));
+    }
 }
