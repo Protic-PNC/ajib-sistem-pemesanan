@@ -130,8 +130,8 @@
         </div>
     </div>
     <div class="navigation">
-        <a href="#"><img style="width: 24px" src="{{ asset('images/home.svg') }}" alt="home"></a>
-        <a href="#"><img style="width: 24px" src="{{ asset('images/message.svg') }}" alt="message"></a>
+        <a href="/category"><img style="width: 24px" src="{{ asset('images/home-active.svg') }}" alt="home"></a>
+        <a href="/orders"><img style="width: 24px" src="{{ asset('images/order.svg') }}" alt="message"></a>
         <a href="#"><img style="width: 24px" src="{{ asset('images/profile.svg') }}" alt="profile"></a>
     </div>
 </body>

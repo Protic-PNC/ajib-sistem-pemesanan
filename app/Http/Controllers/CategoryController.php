@@ -26,6 +26,10 @@ class CategoryController extends Controller
 
         $products = $response->json()['data'];
 
+        $products = array_filter($products, function ($product) use ($slug) {
+            return $product['category']['slug'] == $slug;
+        });
+
         return view('category', compact('products'));
     }
 }
