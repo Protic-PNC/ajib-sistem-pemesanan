@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CompleteData;
+use App\Http\Controllers\CompleteDataController;
 use App\Http\Controllers\ProductController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Models\Token;
-use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +25,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'check.consumer'])->name('dashboard');
 
-Route::get('/complete-data', [CompleteData::class, 'index'])->name('complete-data.index')->middleware('auth');
+Route::get('/complete-data', [CompleteDataController::class, 'index'])->name('complete-data.index')->middleware('auth');
+Route::post('/complete-data', [CompleteDataController::class, 'store'])->name('complete-data.store')->middleware('auth');
 
 Route::middleware(['auth', 'check.consumer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
