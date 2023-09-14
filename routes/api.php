@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BranchController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,6 @@ Route::middleware(['check.token'])->group(function () {
     });
 });
 
+Route::group(["as" => "api."], function () {
+    Route::resource("branch", BranchController::class)->only(["index"]);
+});
