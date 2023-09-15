@@ -39,10 +39,14 @@ Route::middleware(['auth', 'check.consumer'])->group(function () {
 Route::get('/product', [ProductController::class, 'listProduct']);
 Route::get('/category', [CategoryController::class, 'listCategory']);
 
-Route::get('/orders', function(){
+Route::get('/orders', function () {
     return view('orders');
 });
 
 Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category.show');
+
+Route::get('/profile', function () {
+    return view('profile');
+});
 
 require __DIR__ . '/auth.php';

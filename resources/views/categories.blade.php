@@ -3,7 +3,15 @@
 
 <head>
     <title>Category</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
+        * {
+            font-family: 'poppins', sans-serif;
+            margin: 0px;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,10 +20,15 @@
 
         .container {
             width: 100%;
-            padding: 10px;
             text-align: center;
             max-width: 480px;
             margin: 0 auto;
+        }
+
+        .header {
+            height: 15vh;
+            background: linear-gradient(to bottom right, #84b8ca, #0748A9);
+            margin-top: 0px;
         }
 
         h1 {
@@ -115,7 +128,9 @@
 
 <body>
     <div class="container">
-        <h1>Kategori Produk</h1>
+        <div class="header">
+            <h1 style="padding-top: 7vh; color: floralwhite">Kategori Produk</h1>
+        </div>
         <div class="list-category">
             @foreach ($categories as $category)
                 <div class="card">
@@ -132,7 +147,7 @@
     <div class="navigation">
         <a href="/category"><img style="width: 24px" src="{{ asset('images/home-active.svg') }}" alt="home"></a>
         <a href="/orders"><img style="width: 24px" src="{{ asset('images/order.svg') }}" alt="message"></a>
-        <a href="#"><img style="width: 24px" src="{{ asset('images/profile.svg') }}" alt="profile"></a>
+        <a href="/profile"><img style="width: 24px" src="{{ asset('images/profile.svg') }}" alt="profile"></a>
     </div>
 </body>
 

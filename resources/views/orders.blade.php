@@ -16,14 +16,20 @@
 <style>
     * {
         font-family: 'poppins', sans-serif;
+        margin: 0px;
     }
 
     .container {
         width: 100%;
-        padding: 10px;
         text-align: center;
         max-width: 480px;
         margin: 0 auto;
+    }
+
+    .header {
+        height: 15vh;
+        background: linear-gradient(to bottom right, #84b8ca, #0748A9);
+        margin-top: 0px;
     }
 
     .navigation {
@@ -129,7 +135,9 @@
 
 <body>
     <div class="container">
-        <h1>Pesanan Anda</h1>
+        <div class="header">
+            <h1 style="padding-top: 7vh; color: floralwhite">Pesanan Anda</h1>
+        </div>
 
         <div class="order-section">
             <div class="product-item">
@@ -152,7 +160,7 @@
     <div class="navigation">
         <a href="/category"><img style="width: 24px" src="{{ asset('images/home.svg') }}" alt="home"></a>
         <a href="/orders"><img style="width: 24px" src="{{ asset('images/order-active.svg') }}" alt="message"></a>
-        <a href="#"><img style="width: 24px" src="{{ asset('images/profile.svg') }}" alt="profile"></a>
+        <a href="/profile"><img style="width: 24px" src="{{ asset('images/profile.svg') }}" alt="profile"></a>
     </div>
 </body>
 
