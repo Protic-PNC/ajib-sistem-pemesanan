@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use App\Exceptions\InvariantException;
 use App\Models\DetailConsumer;
 use App\Services\BranchService;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 class CompleteDataController extends Controller
 {
