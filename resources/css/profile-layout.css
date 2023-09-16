@@ -1,0 +1,34 @@
+
+* {
+    font-family: 'poppins', sans-serif;
+    margin: 0px;
+}
+
+.container {
+    width: 100%;
+    /* padding: 10px; */
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 480px;
+    background-color: #3686FF;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header {
+    height: 15vh;
+    background: linear-gradient(to bottom right, #84b8ca, #0748A9);
+    margin-top: 0px;
+}
