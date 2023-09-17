@@ -18,7 +18,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 style="padding-top: 7vh; color: floralwhite">Kategori Produk</h1>
+            <h1 style="padding-top: 7vh; color: floralwhite">KATEGORI PRODUK</h1>
         </div>
         <div class="content">
             @yield('content')
