@@ -1,0 +1,100 @@
+* {
+    font-family: "poppins", sans-serif;
+    margin: 0px;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+    /* height: 100vh; */
+    background: linear-gradient(to bottom right, #639fb3, #0748a9);
+}
+
+.header {
+    padding-top: 5vh;
+    color: white;
+    margin-bottom: 36px;
+}
+
+.input-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+
+.input-container input[type="text"] {
+    background-color: transparent;
+    border: solid 1px white;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.input-container input[type="text"]::placeholder {
+    color: rgb(219, 219, 219);
+    font-weight: 100;
+}
+
+.input-title {
+    text-align: left;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.input-field input {
+    width: 100%;
+}
+
+.input-container input[type="file"] {
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.input-container input[type="file"]::placeholder {
+    color: rgb(219, 219, 219);
+    font-weight: 100;
+}
+
+.input-container .input-field input[type="file"]::-webkit-file-upload-button {
+    appearance: none;
+    display: none;
+}
+
+.input-file {
+    background-color: transparent;
+    border: solid 1px white;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.input-file:hover {
+    background-color: #0748a9;
+}
+
+.input-file label {
+    color: rgb(219, 219, 219);
+    font-weight: 100;
+}
+
+.button-lanjut {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    width: 80%;
+    background-color: #3686ff;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 16px 0px;
+    border-radius: 12px;
+    cursor: pointer;
+}

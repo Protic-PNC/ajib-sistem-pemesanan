@@ -3,12 +3,6 @@
     margin: 0px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     width: 100%;
     text-align: center;
@@ -20,14 +14,6 @@ body {
     height: 15vh;
     background: linear-gradient(to bottom right, #84b8ca, #0748a9);
     margin-top: 0px;
-}
-
-h1 {
-    font-size: 24px;
-}
-
-p {
-    font-size: 16px;
 }
 
 /* img {
