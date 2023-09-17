@@ -43,8 +43,4 @@ Route::get('/orders', function () {
 
 Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category.show');
 
-Route::get('/profile', function () {
-    return view('profile');
-});
-
 require __DIR__ . '/auth.php';

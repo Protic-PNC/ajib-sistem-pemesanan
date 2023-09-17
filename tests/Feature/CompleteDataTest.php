@@ -11,9 +11,17 @@ class CompleteDataTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     */
+    public function test_redirect_incomplete_data_should_redirect(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->get(route('dashboard'));
+
+        $response
+            ->assertRedirectToRoute('complete-data.index');
+    }
+
     public function test_complete_data_index(): void
     {
         $user = User::factory()->create();
