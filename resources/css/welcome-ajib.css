@@ -1,0 +1,44 @@
+* {
+    font-family: "poppins", sans-serif;
+    margin: 0px;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+    max-width: 480px;
+    overflow: auto;
+    margin: 0 auto;
+    padding-bottom: 24px;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #639fb3, #0748a9);
+}
+
+.header {
+    padding-top: 15vh;
+    color: white;
+    margin-bottom: 36px;
+}
+
+.header-title {
+    font-size: 48px;
+}
+
+.copywriting-section {
+    width: 80%;
+    color: white;
+    margin: 24px auto;
+}
+
+.button-masuk {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    width: 80%;
+    background-color: #3686ff;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 16px 0px;
+    border-radius: 12px;
+    cursor: pointer;
+}

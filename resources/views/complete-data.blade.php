@@ -48,7 +48,12 @@
         <div class="input-container">
             <h5 class="input-title">Cabang*</h5>
             <div class="input-field">
-                <input type="text" placeholder="Cabang">
+                <select id="cabangDropdown" name="branch_id">
+                    <option value="">Pilih Cabang</option>
+                    @foreach ($branches as $branch)
+                        <option value="{{ $branch['id'] }}">{{ $branch['name'] }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="input-container">
@@ -61,9 +66,9 @@
                     <label for="file-input">Pilih File</label>
                 </div>
             </div>
-        </div>
+            <a href="/category"><button class="button-lanjut">Lanjut</button></a>
 
-        <button class="button-lanjut">Lanjut</button>
+        </div>
     </div>
 </body>
 
