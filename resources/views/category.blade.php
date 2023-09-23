@@ -21,27 +21,27 @@
                     alt="back"></a>
             <h1 style=" color: floralwhite">GALON</h1>
         </div>
-        <div class="card">
-            <h1 style="color: #3686FF; text-align: left">Galon Standar</h1>
-            <div class="product-image">
-                <img style="400px" src="{{ Vite::asset('resources/images/ajib-logo-welcome.png') }}"
-                    alt="product-image">
-            </div>
-            <div class="cart-section">
-                <div class="cart-number">
-                    <img src="{{ Vite::asset('resources/images/plus-icon.svg') }}" alt="plus">
-                    <div class="cart-amount">
-                        <p>1</p>
+        @foreach ($products as $product)
+            <div class="card">
+                <h1 style="color: #3686FF; text-align: left">{{ $product['name'] }}</h1>
+                <div class="product-image">
+                    <img style="400px" src="{{ $product['image'] }}" alt="product-image">
+                </div>
+                <div class="cart-section">
+                    <div class="cart-number">
+                        <img src="{{ Vite::asset('resources/images/plus-icon.svg') }}" alt="plus">
+                        <div class="cart-amount">
+                            <p>1</p>
+                        </div>
+                        <img src="{{ Vite::asset('resources/images/minus-icon.svg') }}" alt="minus">
                     </div>
-                    <img src="{{ Vite::asset('resources/images/minus-icon.svg') }}" alt="minus">
-                </div>
-                <div class="cart-button">
-
-                    <a href="/orders"> <button class="button-tambah">
-                            Tambahkan</button></a>
+                    <div class="cart-button">
+                        <a href="/orders"> <button class="button-tambah">
+                                Tambahkan</button></a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </body>
 

@@ -15,63 +15,97 @@
 <body>
     <div class="container">
         <h1 class="header">LENGKAPI DATA DIRI</h1>
-        <div class="input-container">
-            <h5 class="input-title">Kabupaten*</h5>
-            <div class="input-field">
-                <input type="text" placeholder="Kabupaten">
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Kecamatan*</h5>
-            <div class="input-field">
-                <input type="text" placeholder="Kecamatan">
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Kelurahan*</h5>
-            <div class="input-field">
-                <input type="text" placeholder="Kelurahan">
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Jalan*</h5>
-            <div class="input-field">
-                <input type="text" placeholder="Jalan">
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Nomor HP*</h5>
-            <div class="input-field">
-                <input type="text" placeholder="Nomor HP">
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Cabang*</h5>
-            <div class="input-field">
-                <select id="cabangDropdown" name="branch_id">
-                    <option value="">Pilih Cabang</option>
-                    @foreach ($branches as $branch)
-                        <option value="{{ $branch['id'] }}">{{ $branch['name'] }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="input-container">
-            <h5 class="input-title">Foto Rumah*</h5>
-            <div class="input-field">
-                <div class="input-file">
-                    <input type="file" id="file-input">
-                    <img src="{{ Vite::asset('resources/images/upload-icon.svg') }}" alt="upload-icon">
-                    <br>
-                    <label for="file-input">Pilih File</label>
+        <form action="{{ route('complete-data.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="input-container">
+                <h5 class="input-title">Kabupaten*</h5>
+                <div class="input-field">
+                    <input type="text" placeholder="Kabupaten" name="kabupaten" required>
                 </div>
             </div>
-            <a href="/category"><button class="button-lanjut">Lanjut</button></a>
-
-        </div>
+            <div class="input-container">
+                <h5 class="input-title">Kecamatan*</h5>
+                <div class="input-field">
+                    <input type="text" placeholder="Kecamatan" name="kecamatan" required>
+                </div>
+            </div>
+            <div class="input-container" style="display: flex; width: 85%">
+                <div class="input-kelurahan">
+                    <h5 class="input-title">Kelurahan*</h5>
+                    <div class="input-field">
+                        <input type="text" placeholder="Kelurahan" name="kelurahan" required>
+                    </div>
+                </div>
+                <div class="input-rt">
+                    <h5 class="input-title">RT*</h5>
+                    <div class="input-field">
+                        <input type="text" placeholder="RT" name="rt" required>
+                    </div>
+                </div>
+                <div class="input-rw">
+                    <h5 class="input-title">RW*</h5>
+                    <div class="input-field">
+                        <input type="text" placeholder="RW" name="rw" required>
+                    </div>
+                </div>
+            </div>
+            <div class="input-container" style="display: flex; width: 85%">
+                <div class="input-jalan">
+                    <h5 class="input-title">Jalan*</h5>
+                    <div class="input-field">
+                        <input type="text" placeholder="Jalan" name="alamat" required>
+                    </div>
+                </div>
+                <div class="input-kode-pos">
+                    <h5 class="input-title">Kode Pos*</h5>
+                    <div class="input-field">
+                        <input type="text" placeholder="Kode Pos" name="kode_pos" required>
+                    </div>
+                </div>
+            </div>
+            <div class="input-container">
+                <h5 class="input-title">Nomor HP*</h5>
+                <div class="input-field">
+                    <input type="text" placeholder="Nomor HP" name="no_hp" required>
+                </div>
+            </div>
+            <div class="input-container">
+                <h5 class="input-title">Cabang*</h5>
+                <div class="input-field">
+                    <select id="cabangDropdown" name="branch_id" required>
+                        <option value="">Pilih Cabang</option>
+                        @foreach ($branches as $branch)
+                            <option value="{{ $branch['id'] }}">{{ $branch['name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="input-container">
+                <h5 class="input-title">Foto Rumah*</h5>
+                <div class="input-field">
+                    <div class="input-file">
+                        <input type="file" id="file-input" name="foto_rumah" required onchange="updateFileName()">
+                        <img src="{{ Vite::asset('resources/images/upload-icon.svg') }}" alt="upload-icon">
+                        <br>
+                        <label for="file-input" id="file-label">Pilih File</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button-lanjut">Lanjut</button>
+        </form>
     </div>
-</body>
 
-<script></script>
+    <script>
+        function updateFileName() {
+            var fileInput = document.getElementById('file-input');
+            // Get the selected file name
+            var fileName = fileInput.files[0].name;
+
+            // Update the file label with the selected file name
+            var fileLabel = document.getElementById('file-label');
+            fileLabel.innerHTML = fileName;
+        }
+    </script>
+</body>
 
 </html>

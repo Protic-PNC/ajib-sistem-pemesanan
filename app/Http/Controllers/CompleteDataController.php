@@ -65,7 +65,7 @@ class CompleteDataController extends Controller
             $detailConsumer->user()->associate($user);
             $detailConsumer->save();
 
-            return redirect(route('dashboard'));
+            return redirect(route('category.list'));
         } catch (InvariantException $e) {
             return redirect()->back()->withErrors(["message" => $e->getMessage()]);
         }

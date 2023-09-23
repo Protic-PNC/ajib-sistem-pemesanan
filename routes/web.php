@@ -39,7 +39,7 @@ Route::middleware(['auth', 'check.consumer'])->group(function () {
 });
 
 Route::get('/product', [ProductController::class, 'listProduct']);
-Route::get('/category', [CategoryController::class, 'listCategory']);
+Route::get('/category', [CategoryController::class, 'listCategory'])->name('category.list');
 
 Route::get('/orders', function () {
     return view('orders');

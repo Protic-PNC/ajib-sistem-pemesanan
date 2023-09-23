@@ -4,14 +4,12 @@
     @section('content')
         <div class="list-category">
             @foreach ($categories as $category)
-                <div class="card">
+                <a href="{{ url('category', ['slug' => $category['slug']]) }}" class="card">
                     <img src="{{ $category['images'][0]['image'] }}" alt="{{ $category['name'] }}">
                     <div class="card-content">
-                        <a href="{{ url('category', ['slug' => $category['slug']]) }}">
-                            <p>{{ $category['name'] }}</p>
-                        </a>
+                        <p>{{ $category['name'] }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     @endsection
