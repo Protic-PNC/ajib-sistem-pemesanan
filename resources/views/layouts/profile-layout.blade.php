@@ -19,6 +19,7 @@
         <div class="header">
             <h1 style="padding-top: 7vh; color: floralwhite">Profile Anda</h1>
         </div>
+        @yield('content')
     </div>
 
     <div class="navigation">

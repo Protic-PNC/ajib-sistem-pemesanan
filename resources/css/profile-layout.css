@@ -31,3 +31,64 @@
     background: linear-gradient(to bottom right, #84b8ca, #0748a9);
     margin-top: 0px;
 }
+
+.edit-icon {
+    margin-left: 85%;
+    margin-top: 16px;
+    width: 24px;
+}
+
+.title-profile {
+    margin: 24px auto;
+}
+
+.title-profile img {
+    width: 100px;
+    height: 100px;
+}
+
+.name-phone {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+
+.phone-number {
+    font-weight: 200;
+}
+
+.info-section {
+    width: 80%;
+    background-color: #dddddd;
+    border-radius: 12px;
+    margin: auto;
+    padding: 16px;
+}
+
+.key-section {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.value-section {
+    text-align: right;
+    margin-left: 20%;
+    font-weight: 500;
+}
+
+.key {
+    opacity: 0.5;
+}
+
+.button-logout {
+    border: 0px;
+    background-color: #fc4343;
+    color: white;
+    padding: 8px 24px;
+    margin-top: 16px;
+    margin-left: 60%;
+    border-radius: 8px;
+}
