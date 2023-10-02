@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -24,8 +25,20 @@
         @foreach ($products as $product)
             <div class="card">
                 <h1 style="color: #3686FF; text-align: left">{{ $product['name'] }}</h1>
-                <div class="product-image">
-                    <img style="400px" src="{{ $product['image'] }}" alt="product-image">
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        @foreach ($product['images'] as $image)
+                            <div class="swiper-slide">
+                                <img src="  {{ $image['image'] }}" alt="{{ $product['name'] }}" />
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
                 <div class="cart-section">
                     <div class="cart-number">
@@ -43,6 +56,20 @@
             </div>
         @endforeach
     </div>
+
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            spaceBetween: 24,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 
 </html>

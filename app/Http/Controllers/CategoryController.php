@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class CategoryController extends Controller
 {
+    public function __construct(
+        private ProductService $productService
+    ) {
+    }
+
     public function listCategory()
     {
         $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/category');
@@ -22,13 +28,12 @@ class CategoryController extends Controller
 
     public function showCategory($slug)
     {
-        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/product');
+        /** @var \App\Models\User */
+        $user = auth()->user();
 
-        $products = $response->json()['data'];
-
-        $products = array_filter($products, function ($product) use ($slug) {
-            return $product['category']['slug'] == $slug;
-        });
+        $products = $this
+            ->productService
+            ->getProductsByCategory($user->detailConsumer->branch_id, $slug);
 
         return view('category', compact('products'));
     }

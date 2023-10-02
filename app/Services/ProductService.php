@@ -24,7 +24,18 @@ class ProductService extends BaseService
             "branch" => $branch_id,
             "id" => $id
         ]);
-        $products = $response->json("data.0");
+        $product = $response->json("data.0");
+
+        return $product;
+    }
+
+    public function getProductsByCategory(int $branch_id, string $category): array | null
+    {
+        $response = $this->request()->get('https://sso-ajib-dev.protic.web.id/api/product/category', [
+            "branch" => $branch_id,
+            "slug" => $category
+        ]);
+        $products = $response->json("data", []);
 
         return $products;
     }
