@@ -43,4 +43,18 @@ class CartController extends Controller
 
         return response()->json(["count" => $cartItemsCount]);
     }
+
+    public function destroy($id)
+    {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+
+        \Cart::session($user->id);
+        if (!\Cart::get($id)) throw new InvariantException("Item tidak ditemukan pada keranjang!");
+
+        \Cart::remove($id);
+        $cartItemsCount = \Cart::getContent()->count();
+
+        return response()->json(["count" => $cartItemsCount]);
+    }
 }

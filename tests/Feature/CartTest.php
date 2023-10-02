@@ -28,4 +28,17 @@ class CartTest extends TestCase
         $response->assertSuccessful();
         $response->assertJson(["count" => 1]);
     }
+
+    // TODO
+    // public function test_user_can_delete_item_from_cart(): void
+    // {
+    //     $user = User::factory()
+    //         ->has(DetailConsumer::factory(), 'detailConsumer')
+    //         ->create();
+    //     $this->actingAs($user);
+
+    //     $this->withSession([
+
+    //     ])->delete(route('cart.destroy', ["id" => 456]));
+    // }
 }
