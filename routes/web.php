@@ -17,11 +17,11 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('/welcome-ajib');
 });
 
