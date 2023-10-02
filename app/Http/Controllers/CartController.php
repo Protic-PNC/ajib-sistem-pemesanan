@@ -57,4 +57,27 @@ class CartController extends Controller
 
         return response()->json(["count" => $cartItemsCount]);
     }
+
+    public function update(Request $req, $id)
+    {
+        $data = $req->validate([
+            "qty" => "integer"
+        ]);
+
+        /** @var \App\Models\User */
+        $user = auth()->user();
+
+        \Cart::session($user->id);
+
+        $item = \Cart::get($id);
+        if (!$item) throw new InvariantException("Item tidak ditemukan pada keranjang!");
+
+        \Cart::update($id, [
+            "quantity" => $data["qty"] ? $data["qty"] + $item["quantity"] : $item["quantity"]
+        ]);
+
+        $item = \Cart::get($id);
+
+        return response()->json(["qty" => $item["quantity"]]);
+    }
 }

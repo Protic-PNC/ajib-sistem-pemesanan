@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,10 @@ Route::middleware(['check.token'])->group(function () {
             'data' => $user
         ]);
     });
+});
+
+Route::middleware(["check.consumer"])->group(function () {
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+    Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
 });

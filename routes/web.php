@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompleteDataController;
 use App\Http\Controllers\ProductController;
@@ -33,9 +32,6 @@ Route::middleware(['auth', 'check.consumer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 });
 
 Route::get('/product', [ProductController::class, 'listProduct']);
