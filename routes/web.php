@@ -47,4 +47,5 @@ Route::get('/orders', function () {
 
 Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category.show');
 
+
 require __DIR__ . '/auth.php';

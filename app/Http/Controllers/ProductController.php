@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    public function __construct(private ProductService $productService)
+    {
+    }
+
     public function listProduct()
     {
-        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/product');
-
-        if ($response->successful()) {
-            $products = $response->json()['data'];
-        } else {
-            $products = [];
-        }
+        /** @var \App\Models\User */
+        $user = auth()->user();
+        $products = $this
+            ->productService
+            ->getProducts($user->detailConsumer->branch_id);
 
         return view('products', compact('products'));
     }
