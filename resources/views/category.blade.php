@@ -122,6 +122,8 @@
                 Swal.fire({
                     icon: 'success',
                     text: 'Produk berhasil ditambahkan ke dalam keranjang!',
+                    timer: 2000,
+                    timerProgressBar: true,
                 })
             } catch (e) {
                 Swal.fire({
