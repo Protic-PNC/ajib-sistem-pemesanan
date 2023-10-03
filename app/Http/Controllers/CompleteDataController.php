@@ -7,6 +7,7 @@ use App\Models\DetailConsumer;
 use App\Services\BranchService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Throwable;
 
 class CompleteDataController extends Controller
 {
@@ -24,21 +25,21 @@ class CompleteDataController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'kabupaten' => "required|string",
+            'kecamatan' => "required|string",
+            'kelurahan' => "required|string",
+            'branch_id' => "required|integer",
+            'rt' => "required|string",
+            'rw' => "required|string",
+            'alamat' => "required|string",
+            'kode_pos' => "required|string",
+            'no_hp' => "required|string",
+            'foto_rumah' => "required|image|max:2048|mimes:jpeg,png,jpg,gif"
+        ]);
+
         try {
             $branches = $this->branchService->getBranches();
-
-            $data = $request->validate([
-                'kabupaten' => "required|string",
-                'kecamatan' => "required|string",
-                'kelurahan' => "required|string",
-                'branch_id' => "required|integer",
-                'rt' => "required|string",
-                'rw' => "required|string",
-                'alamat' => "required|string",
-                'kode_pos' => "required|string",
-                'no_hp' => "required|string",
-                'foto_rumah' => "required|image|size:1024|mimes:jpeg,png,jpg,gif"
-            ]);
 
             // get selected branch detail
             $branch = Arr::first($branches, function (array $value) use ($data) {
@@ -66,7 +67,9 @@ class CompleteDataController extends Controller
             $detailConsumer->save();
 
             return redirect(route('category.list'));
-        } catch (InvariantException $e) {
+        } catch (Throwable $e) {
+            logger()->error($e->getMessage());
+
             return redirect()->back()->withErrors(["message" => $e->getMessage()]);
         }
     }

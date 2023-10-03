@@ -92,6 +92,9 @@
                     </div>
                 </div>
             </div>
+            @error('foto_rumah')
+                <div class="" style="color: red">{{ $message }}</div>
+            @enderror
             <button type="submit" class="button-lanjut">Lanjut</button>
         </form>
     </div>

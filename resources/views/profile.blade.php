@@ -6,8 +6,8 @@
     <div class="title-profile">
         <img src="{{ Vite::asset('resources/images/ajib-logo.png') }}" alt="profile-image">
         <div class="name-phone">
-            <h2 class="name-profile">Adrian Ramadhan</h2>
-            <p class="phone-number">0882 2529 2279</p>
+            <h2 class="name-profile">{{ auth()->user()->name }}</h2>
+            <p class="phone-number">{{ auth()->user()->detailConsumer->no_hp }}</p>
         </div>
     </div>
     <div class="info-section">
@@ -15,13 +15,19 @@
         <div class="cabang">
             <div class="key-section">
                 <p class="key">Cabang</p>
-                <p class="value-section">Cabang</p>
+                <p class="value-section">{{ auth()->user()->detailConsumer->branch_name }}</p>
             </div>
         </div>
         <div class="alamat-rumah">
             <div class="key-section">
                 <p class="key">Alamat Rumah</p>
-                <p class="value-section">JL. Rinjani No.51, Sidanegara Cilacap Tengah, Cilacap</p>
+                <p class="value-section">
+                    {{ auth()->user()->detailConsumer->alamat }}
+                    Rt {{ auth()->user()->detailConsumer->rt }}/Rw {{ auth()->user()->detailConsumer->rw }},
+                    {{ auth()->user()->detailConsumer->kelurahan }},
+                    Kec {{ auth()->user()->detailConsumer->kecamatan }},
+                    {{ auth()->user()->detailConsumer->kabupaten }}. ({{ auth()->user()->detailConsumer->kode_pos }})
+                </p>
             </div>
         </div>
         <div class="foto-rumah">
@@ -32,7 +38,10 @@
         </div>
     </div>
 
-    <button class="button-logout">
-        LOGOUT
-    </button>
+    <form action="{{ route('logout') }}" method="post">
+        @csrf
+        <button class="button-logout">
+            LOGOUT
+        </button>
+    </form>
 @endsection
