@@ -29,7 +29,7 @@
     <div class="navigation">
         <a href="/category"><img style="width: 24px" src="{{ Vite::asset('resources/images/home.svg') }}"
                 alt="home"></a>
-        <a href="/orders"><img style="width: 24px" src="{{ Vite::asset('resources/images/order-active.svg') }}"
+        <a href="/cart"><img style="width: 24px" src="{{ Vite::asset('resources/images/order-active.svg') }}"
                 alt="message"></a>
         <a href="/profile"><img style="width: 24px" src="{{ Vite::asset('resources/images/profile.svg') }}"
                 alt="profile"></a>
