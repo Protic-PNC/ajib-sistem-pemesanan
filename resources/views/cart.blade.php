@@ -65,15 +65,15 @@
             }
 
             Swal.fire({
-                toast: true,
                 icon: "success",
                 title: "Item berhasil dihapus!",
-                position: 'bottom',
                 showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Batal',
-                timer: 1000,
-                timerProgressBar: true
+                timer: 2000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                allowEscapeKey: false
             }).then(async (result) => {
                 if (result.dismiss === Swal.DismissReason.cancel) {
                     container.querySelector("#emptyCart")?.remove();
