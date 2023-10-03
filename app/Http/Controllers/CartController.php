@@ -80,4 +80,16 @@ class CartController extends Controller
 
         return response()->json(["qty" => $item["quantity"]]);
     }
+
+    public function index()
+    {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+
+        \Cart::session($user->id);
+
+        $items = \Cart::getContent();
+
+        return view('cart', compact('items'));
+    }
 }
