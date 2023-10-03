@@ -35,7 +35,7 @@ class CartController extends Controller
             'name' => $product["name"],
             'price' => $product["harga"],
             'quantity' => $data["qty"],
-            'attributes' => array(),
+            'attributes' => ["created_at" => now()->timestamp],
             'associatedModel' => $product
         ]);
 
@@ -73,11 +73,23 @@ class CartController extends Controller
         if (!$item) throw new InvariantException("Item tidak ditemukan pada keranjang!");
 
         \Cart::update($id, [
-            "quantity" => $data["qty"] ? $data["qty"] + $item["quantity"] : $item["quantity"]
+            "quantity" => $data["qty"] - $item["quantity"]
         ]);
 
         $item = \Cart::get($id);
 
         return response()->json(["qty" => $item["quantity"]]);
+    }
+
+    public function index()
+    {
+        /** @var \App\Models\User */
+        $user = auth()->user();
+
+        \Cart::session($user->id);
+
+        $items = \Cart::getContent()->sortByDesc(fn ($cart) => $cart->attributes->get("created_at"));
+
+        return view('cart', compact('items'));
     }
 }
