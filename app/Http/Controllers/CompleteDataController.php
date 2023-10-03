@@ -37,7 +37,7 @@ class CompleteDataController extends Controller
                 'alamat' => "required|string",
                 'kode_pos' => "required|string",
                 'no_hp' => "required|string",
-                'foto_rumah' => "required|image"
+                'foto_rumah' => "required|image|size:1024|mimes:jpeg,png,jpg,gif"
             ]);
 
             // get selected branch detail

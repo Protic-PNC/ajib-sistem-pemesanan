@@ -24,7 +24,7 @@ class BranchService
 
     public function getBranches()
     {
-        $response = $this->request()->get('http://sso-ajib-dev.protic.web.id/api/branch');
+        $response = $this->request()->get('https://sso-ajib-dev.protic.web.id/api/branch');
         $branches = $response->json("data", []);
 
         return $branches;

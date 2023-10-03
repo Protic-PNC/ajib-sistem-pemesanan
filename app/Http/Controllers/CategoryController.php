@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function listCategory()
     {
-        $response = Http::withToken(env('BEARER_TOKEN'))->get('http://sso-ajib-dev.protic.web.id/api/category');
+        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/category');
 
         if ($response->successful()) {
             $categories = $response->json()['data'];
@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function showCategory($slug)
     {
-        $response = Http::withToken(env('BEARER_TOKEN'))->get('http://sso-ajib-dev.protic.web.id/api/product');
+        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/product');
 
         $products = $response->json()['data'];
 

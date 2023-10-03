@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function listProduct()
     {
-        $response = Http::withToken(env('BEARER_TOKEN'))->get('http://sso-ajib-dev.protic.web.id/api/product');
+        $response = Http::withToken(env('BEARER_TOKEN'))->get('https://sso-ajib-dev.protic.web.id/api/product');
 
         if ($response->successful()) {
             $products = $response->json()['data'];
