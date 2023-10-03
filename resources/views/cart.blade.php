@@ -22,18 +22,21 @@
                     </button>
 
                     <div class="cart-number">
-                        <button type="button" id="btnDecr" class="btn-icon" data-item-id="{{ $item['id'] }}">
+                        <button type="button" id="btnDecr" class="btn-icon"
+                            onclick="updateItemQty(event, {{ $item['id'] }}, -1)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M19 13H5v-2h14v2Z" />
                             </svg>
                         </button>
 
                         <div class="cart-amount">
-                            <p id="amtDisplay">1</p>
-                            <input type="text" hidden value="1" id="amtInput">
+                            <p id="amtDisplay-{{ $item['id'] }}">{{ $item['quantity'] }}</p>
+                            <input type="text" hidden value="{{ $item['quantity'] }}"
+                                id="amtInput-{{ $item['id'] }}">
                         </div>
 
-                        <button type="button" id="btnIncr" class="btn-icon">
+                        <button type="button" id="btnIncr" class="btn-icon"
+                            onclick="updateItemQty(event, {{ $item['id'] }})">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z" />
                             </svg>
@@ -69,7 +72,7 @@
                 showConfirmButton: false,
                 showCancelButton: true,
                 cancelButtonText: 'Batal',
-                timer: 3000,
+                timer: 1000,
                 timerProgressBar: true
             }).then(async (result) => {
                 if (result.dismiss === Swal.DismissReason.cancel) {
@@ -112,6 +115,57 @@
                     }
                 }
             });
+        }
+
+        const updateItem = debounce(async (id, qty) => {
+            try {
+                let data = {
+                    _token: `{{ csrf_token() }}`,
+                    qty
+                }
+
+                const res = await fetch(`/api/cart/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "accept": "application/json",
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                    credentials: "same-origin"
+                })
+
+                if (!res.ok) {
+                    throw new Error("Terjadi kesalahan di sisi server.");
+                }
+            } catch (e) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: e.message
+                })
+            }
+        }, 500);
+
+        function updateItemQty(e, id, n = 1) {
+            const inputEl = document.getElementById(`amtInput-${id}`);
+            const displayEl = document.getElementById(`amtDisplay-${id}`);
+
+            let val = +inputEl.value + n;
+
+            inputEl.value = val < 1 ? inputEl.value : val;
+            displayEl.textContent = inputEl.value;
+            updateItem(id, val);
+        }
+
+        function debounce(fn, delay) {
+            let timeoutID;
+            return function(...args) {
+                if (timeoutID)
+                    clearTimeout(timeoutID);
+                timeoutID = setTimeout(() => {
+                    fn(...args)
+                }, delay);
+            }
         }
     </script>
 @endsection
