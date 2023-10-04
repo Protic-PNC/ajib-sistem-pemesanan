@@ -34,6 +34,7 @@ class CategoryController extends Controller
         $products = $this
             ->productService
             ->getProductsByCategory($user->detailConsumer->branch_id, $slug);
+        // dd($products);
 
         return view('category', compact('products'));
     }

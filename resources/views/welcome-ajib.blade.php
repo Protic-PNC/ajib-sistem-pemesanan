@@ -19,10 +19,9 @@
             <h1 class="header-title">AJIB DARKAH</h1>
         </div>
         <div class="copywriting-section">
-            Ajib Darkah adalah blablabla blablabla blablababalba bal ablaa arbs adnd xckancxcbxcma,dhdiw sbxnc,cbsu xc
-            kxcnx u xnc aedbk xnc fd xncbcbielaef cxmc dfud fxnxmc si fe7we k dsf dnd faiu asfdnxbsife fxbnxbcdifu
+            Ajib Darkah adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio consequatur repellat dolorum! Ex, sunt consequuntur molestias rem similique asperiores porro.
         </div>
-        <a href="/complete-data"> <button class="button-masuk">
+        <a href="/category"> <button class="button-masuk">
                 Masuk</button></a>
 
     </div>

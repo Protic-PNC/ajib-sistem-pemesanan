@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'check.consumer'])->name('dashboard');
 
-Route::get('/complete-data', [CompleteDataController::class, 'index'])->name('complete-data.index')->middleware('auth');
+Route::get('/complete-data', [CompleteDataController::class, 'index'])->name('complete-data.index')->middleware('auth', 'check.consumer');
 Route::post('/complete-data', [CompleteDataController::class, 'store'])->name('complete-data.store')->middleware('auth');
 
 Route::middleware(['auth', 'check.consumer'])->group(function () {

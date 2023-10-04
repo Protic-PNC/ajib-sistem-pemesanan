@@ -22,43 +22,46 @@
                     alt="back"></a>
             <h1 style=" color: floralwhite">GALON</h1>
         </div>
-        @foreach ($products as $product)
-            <div class="card">
-                <h1 style="color: #3686FF; text-align: left">{{ $product['name'] }}</h1>
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        @foreach ($product['images'] as $image)
-                            <div class="swiper-slide">
-                                <img src="  {{ $image['image'] }}" alt="{{ $product['name'] }}" />
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
-
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-                <div class="cart-section">
-                    <div class="cart-number">
-                        <button type="button" id="btnIncr">
-                            <img src="{{ Vite::asset('resources/images/plus-icon.svg') }}" alt="plus">
-                        </button>
-                        <div class="cart-amount">
-                            <p id="amtDisplay">1</p>
-                            <input type="text" hidden value="1" id="amtInput">
+        @forelse ($products as $product)
+        <div class="card" style="margin: 20px auto;">
+            <h1 style="color: #3686FF; text-align: left">{{ $product['name'] }}</h1>
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    @foreach ($product['images'] as $image)
+                        <div class="swiper-slide">
+                            <img src="  {{ $image['image'] }}" alt="{{ $product['name'] }}" />
                         </div>
-                        <button type="button" id="btnDecr">
-                            <img src="{{ Vite::asset('resources/images/minus-icon.svg') }}" alt="minus">
-                        </button>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="cart-section">
+                <div class="cart-number">
+                    <button type="button" id="btnIncr">
+                        <img src="{{ Vite::asset('resources/images/plus-icon.svg') }}" alt="plus">
+                    </button>
+                    <div class="cart-amount">
+                        <p id="amtDisplay">1</p>
+                        <input type="text" hidden value="1" id="amtInput">
                     </div>
-                    <div class="cart-button">
-                        <button type="button" class="button-tambah">Tambahkan</button>
-                    </div>
+                    <button type="button" id="btnDecr">
+                        <img src="{{ Vite::asset('resources/images/minus-icon.svg') }}" alt="minus">
+                    </button>
+                </div>
+                <div class="cart-button">
+                    <button type="button" class="button-tambah">Tambahkan</button>
                 </div>
             </div>
-        @endforeach
+        </div>
+        @empty
+
+        @endforelse
+
     </div>
 
     <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -124,6 +127,8 @@
                     text: 'Produk berhasil ditambahkan ke dalam keranjang!',
                     timer: 2000,
                     timerProgressBar: true,
+                }).then(() => {
+                    window.location.href = "{{ route('cart.index') }}";
                 })
             } catch (e) {
                 Swal.fire({
