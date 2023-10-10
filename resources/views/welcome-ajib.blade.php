@@ -21,7 +21,7 @@
         <div class="copywriting-section">
             Ajib Darkah adalah Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio consequatur repellat dolorum! Ex, sunt consequuntur molestias rem similique asperiores porro.
         </div>
-        <a href="/category"> <button class="button-masuk">
+        <a href="{{ route('home') }}"> <button class="button-masuk">
                 Masuk</button></a>
 
     </div>

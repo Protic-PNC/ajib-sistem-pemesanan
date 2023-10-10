@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->integer('no_order');
             $table->string('status');
+            $table->boolean('cart')->default(true);
             $table->timestamps();
         });
     }

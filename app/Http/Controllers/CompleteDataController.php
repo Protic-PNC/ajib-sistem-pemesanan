@@ -66,7 +66,7 @@ class CompleteDataController extends Controller
             $detailConsumer->user()->associate($user);
             $detailConsumer->save();
 
-            return redirect(route('category.list'));
+            return redirect(route('home'));
         } catch (Throwable $e) {
             logger()->error($e->getMessage());
 
