@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Livewire\Product;
 use App\Livewire\Category;
 use App\Livewire\TestPage;
@@ -67,6 +68,8 @@ Route::middleware(['auth', 'check.consumer'])->group(function () {
 
     Route::get('/keranjang', Carts::class)->name('carts');
     Route::get('/profile', Profile::class)->name('profile');
+
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('keluar');
 });
 
 require __DIR__ . '/auth.php';

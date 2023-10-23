@@ -20,7 +20,7 @@
             <nav class="max-w-[425px] w-full bg-blue-500 px-6 py-4 fixed top-0 z-50">
                 <div class="flex items-center">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-8" srcset="">
-                    <p class="text-white font-semibold ms-3">
+                    <p class="text-white font-semibold ms-3 text-lg">
                         @hasSection('title')
                             @yield('title')
                         @else

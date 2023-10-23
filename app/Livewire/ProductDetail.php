@@ -61,6 +61,32 @@ class ProductDetail extends Component
         return redirect()->route('orders');
     }
 
+    public function cart()
+    {
+        $checkCart = Order::where('user_id', auth()->user()->id)->where('cart', true)->first();
+
+        if($checkCart) {
+            $order = $checkCart;
+        } else {
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'no_order' => 0,
+                'status' => 'mengantri',
+                'cart' => true
+            ]);
+        }
+
+        DetailOrder::create([
+            'order_id' => $order->id,
+            'produk_id' => $this->product['id'],
+            'nama_produk' => $this->product['name'],
+            'quantity' => $this->quantity,
+            'harga' => $this->product['harga']
+        ]);
+
+        return redirect()->route('carts');
+    }
+
     public function render()
     {
         return view('livewire.product-detail');

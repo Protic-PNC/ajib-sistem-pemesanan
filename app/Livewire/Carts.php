@@ -8,6 +8,10 @@ class Carts extends Component
 {
     public function render()
     {
-        return view('livewire.carts');
+        $carts = auth()->user()->orders()->where('cart', true)->first()->detailOrder()->get();
+
+        return view('livewire.carts', [
+            'carts' => $carts
+        ]);
     }
 }
